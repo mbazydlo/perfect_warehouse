@@ -1,0 +1,418 @@
+html {
+    box-sizing: border-box;
+    background: rgb(83,83,83);
+    background: linear-gradient(320deg, rgb(30,30,30) 0%, rgb(15,15,15) 50%, rgba(0,0,0,1) 100%) no-repeat;
+    min-height: 100vh;
+}
+  
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    color: rgb(255,255,255);
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Header and navbar */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1120px;
+    width: 100%;
+    margin: 16px auto 0;
+    padding: 0 16px;
+}
+
+.header__title {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0 8px;
+}
+
+.navigation__list {
+    display: flex;
+    list-style-type: none;
+}
+
+.navigation__item {
+    margin: 0 16px;
+}
+
+.navigation__link {
+    color: rgb(255,255,255);
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration: none;
+}
+
+/* Main */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1120px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container--login {
+    margin: 32px auto 0;
+}
+
+/* General section */
+
+.section {
+    background-color: rgba(255,255,255,.1);
+    border: 1px solid rgba(70,70,70,.5);
+    margin: 16px;
+    padding: 32px;
+}
+
+.section__heading {
+    color: rgb(230,82,82);
+    font-size: 36px;
+    margin: 8px 0;
+}
+
+.section__heading--error {
+    font-size: 24px;
+}
+
+.section__text {
+    display: block;
+    font-size: 24px;
+    margin: 4px 0;
+}
+
+.section__text--tech-info {
+    color: rgb(100,100,100);
+    font-size: 16px;
+    font-style: italic;
+}
+
+.section__text--info {
+    font-size: 16px;
+}
+
+.section__text--heading {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.section__text--level {
+    color: rgb(0,100,0);
+    font-weight: 700;
+}
+
+.section__text--exercise {
+    margin: 16px 0;
+}
+
+.section__link {
+    display: inline-block;
+    color: rgb(255,255,255);
+    font-size: 16px;
+    margin: 16px 0;
+}
+
+.section__link--add {
+    text-decoration: none;
+    background-color: rgb(41,76,233);
+    border: 0;
+    padding: 8px 32px;
+    margin: 8px 0;
+}
+
+/* Lists for user and admin */
+
+.list {
+    list-style-type: none;
+}
+
+.list__item {
+    margin: 8px 0;
+}
+
+.list__link {
+    color: rgb(255,255,255);
+    font-size: 20px;
+    text-decoration: none;
+}
+
+/* Tables with data */
+
+.table {
+    color: rgb(255,255,255);
+    text-align: center;
+    background-color: none;
+    width: 100%;
+    margin: 8px 0;
+}
+
+.table__cell {
+    background-color: rgb(0,0,0);
+    border: 1px solid rgba(70,70,70,.5);
+    padding: 16px 8px;
+}
+
+.table__cell--flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table__heading {
+    background-color: rgb(30,30,30);
+}
+
+.table__link {
+    color: rgb(41,76,233);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.table__visible {
+    color: rgb(0,100,0);
+    font-weight: 700;
+}
+
+.table__invisible {
+    color: rgb(139,0,0);
+    font-weight: 700;
+}
+
+/* Add solution */
+
+.solution__label {
+    display: block;
+    font-size: 14px;
+}
+
+.solution__textarea {
+    display: block;
+    color: rgb(255,255,255);
+    background: rgb(30,30,30);
+    border: 1px solid rgba(70,70,70,.5);
+    width: 800px;
+    height: 300px;
+    margin: 4px 0;
+    padding: 4px;
+}
+
+.solution__button {
+    cursor: pointer;
+    color: rgb(255,255,255);
+    font-size: 16px;
+    border: 0;
+    padding: 8px 32px;
+    margin: 8px 0;
+}
+
+.solution__button--submit {
+    background-color: rgb(41,76,233);
+}
+
+.solution__button--next {
+    margin: 16px 32px;
+    padding: 0;
+}
+
+/* Add exercise */
+
+.exercise {
+    margin-top: 32px;
+}
+
+.exercise__conatiner {
+    margin: 8px 0;
+}
+
+.exercise__label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 0;
+    width: 100%;
+}
+
+.exercise__span {
+    width: 200px;
+}
+
+.exercise__input {
+    color: #FFFFFF;
+    background: rgb(30,30,30);
+    border: 1px solid rgba(70,70,70,.5);
+    width: 100%;
+    padding: 4px;
+}
+
+.exercise__textarea {
+    color: rgb(255,255,255);
+    background: rgb(30,30,30);
+    border: 1px solid rgba(70,70,70,.5);
+    width: 100%;
+    height: 300px;
+    padding: 4px;
+}
+
+.exercise__submit {
+    cursor: pointer;
+    color: rgb(255,255,255);
+    font-size: 16px;
+    background-color: rgb(41,76,233);
+    border: 0;
+    padding: 8px 32px;
+    margin: 8px 0;
+}
+
+/* Login */
+
+.login {
+    margin: 16px 0;
+}
+
+.login__container {
+    margin: 8px 0;
+}
+
+.login__label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 250px;
+}
+
+.login__span {
+    width: 75px;
+}
+
+.login__input {
+    display: block;
+    color: rgb(255,255,255);
+    background: rgb(30,30,30);
+    border: 1px solid rgba(70,70,70,.5);
+    width: 100%;
+    padding: 4px;
+}
+
+.login__submit {
+    cursor: pointer;
+    color: rgb(255,255,255);
+    font-size: 16px;
+    background-color: rgb(41,76,233);
+    border: 0;
+    padding: 8px 32px;
+    margin: 8px 0;
+}
+
+/* Toggle switch */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+  
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+  
+.slider:before {
+    position: absolute;
+    content: '';
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+  
+input:checked + .slider {
+    background-color: rgb(41,76,233);
+}
+  
+input:focus + .slider {
+    box-shadow: 0 0 1px rgb(41,76,233);
+}
+  
+input:checked + .slider:before {
+    transform: translate(16px, 2px);
+}
+
+input + .slider:before {
+    transform: translate(0, 2px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Chat */
+
+.chat__container {
+    color: rgb(255,255,255);
+    background: rgb(30,30,30);
+    border: 1px solid rgba(70,70,70,.5);
+    width: 100%;
+    height: 300px;
+    padding: 8px;
+    overflow-y: auto;
+}
+
+.chat__author {
+    color: rgb(139,0,0);
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.chat__time {
+    color: rgb(100,100,100);
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.chat__message {
+    margin: 2px 0 8px;
+}
+
+.chat__input {
+    color: rgb(255,255,255);
+    background: rgb(30,30,30);
+    border: 1px solid rgba(70,70,70,.5);
+    width: 100%;
+    padding: 4px;
+}
+
+.chat__submit {
+    cursor: pointer;
+    color: rgb(255,255,255);
+    font-size: 16px;
+    background-color: rgb(41,76,233);
+    border: 0;
+    padding: 8px 32px;
+    margin: 8px 0;
+}
