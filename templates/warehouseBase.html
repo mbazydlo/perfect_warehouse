@@ -9,10 +9,12 @@
 <body>
     {% block body %}
     <header class="header">
-        {% include 'navBar.html' %}
+        {% include "navBar.html" %}
     </header>
     <main class="container">
-    {% block main %}{% endblock %}
+        <section class="section">
+            {% block main %}{% endblock %}
+        </section>
     </main>
     {% endblock %}
 </body>

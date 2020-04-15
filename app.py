@@ -22,6 +22,10 @@ def warehouseOrders():
 def warehouseProducts():
     return render_template('warehouseProducts.html')
 
+@app.route('/warehouseQuarantine.html')
+def warehouseQuarantine():
+    return render_template('warehouseQuarantine.html')
+
 @app.route('/warehouseStaff.html')
 def warehouseStaff():
     return render_template('warehouseStaff.html')
