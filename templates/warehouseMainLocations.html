@@ -11,7 +11,7 @@
 
 {% block body %}
     {{ super() }}
-    
-    {{ location }}
-    </section>
+    {% for main_locaion in all %}
+        {{ main_locaion }}
+    {% endfor %}
 {% endblock %}

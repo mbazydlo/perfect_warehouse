@@ -1,6 +1,13 @@
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+import model
 
 app=Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///warehouse.db'
+app.config['SQLALCHEMY_TRACKMODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
 
 @app.route('/')
 def warehouseMain():
@@ -12,7 +19,8 @@ def warehouseEquipment():
 
 @app.route('/warehouseMainLocations.html')
 def warehouseMainLocations():
-    return render_template('warehouseMainLocations.html', location = 'coś')
+    all = model.WarehouseMainLocation.query.all()
+    return render_template('warehouseMainLocations.html', all = all)
 
 @app.route('/warehouseOrders.html')
 def warehouseOrders():
