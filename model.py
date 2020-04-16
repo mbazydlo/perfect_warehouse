@@ -44,6 +44,9 @@ class WarehouseMainLocation(db.Model):
                                              backref='warehouse_main_location', 
                                              lazy = 'dynamic')
     
+    def __init__(self, main_location_name, main_location_address):
+        self.main_location_name = main_location_name
+        self.main_location_address = main_location_address
                                              
 
 class WarehouseStockLocation(db.Model):

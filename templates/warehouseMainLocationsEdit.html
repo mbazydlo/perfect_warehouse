@@ -1,0 +1,21 @@
+{% extends "warehouseBase.html" %}
+{% block title %} Edycja magazynu {% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block main %}
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+    {{ super() }}
+    <form method="POST">
+        {{ form.main_location_name.label }} 
+        {{ form.main_location_name(value=to_edit.main_location_name) }}
+        {{ form.main_location_address.label }} 
+        {{ form.main_location_address(value=to_edit.main_location_address) }}
+        {{ form.submit() }}
+    </form>
+{% endblock %}
