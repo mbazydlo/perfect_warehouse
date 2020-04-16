@@ -81,6 +81,10 @@ class WarehouseEquipment(db.Model):
                                                         backref='stuff',
                                                         lazy = 'dynamic')
 
+    def __init__(self, equipment_name, main_location_id):
+        self.equipment_name = equipment_name
+        self.main_location_id = main_location_id
+
 class Stuff(db.Model):
     __tablename__ = 'stuff'
     id = db.Column(db.Integer, primary_key=True)

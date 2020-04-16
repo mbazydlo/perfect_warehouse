@@ -1,0 +1,21 @@
+{% extends "warehouseBase.html" %}
+{% block title %} Edycja danych o sprzęcie {% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block main %}
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+    {{ super() }}
+    <form method="POST">
+        {{ form.equipment_name.label }} 
+        {{ form.equipment_name(value=to_edit.equipment_name) }}
+        {{ form.main_location_id.label }} 
+        {{ form.main_location_id(value=to_edit.main_location_id) }}
+        {{ form.submit() }}
+    </form>
+{% endblock %}

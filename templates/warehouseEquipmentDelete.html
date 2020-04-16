@@ -1,0 +1,18 @@
+{% extends "warehouseBase.html" %}
+{% block title %} Kasowanie Sprzętu {% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block main %}
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+    {{ super() }}
+    <p>Czy jesteś pewien, że chcesz usunąć z bazy Sprzęt: {{ to_delete.equipment_name }}</p>
+    <form method="POST">
+        <input type="submit" value="Usuń" class="exercise__submit">
+    </form>
+{% endblock %}
