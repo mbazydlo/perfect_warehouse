@@ -107,6 +107,12 @@ class Stuff(db.Model):
 
     order = db.relationship('Order', backref='stuff', lazy = 'dynamic')
 
+    def __init__(self, department_id, first_name, last_name, hire_date):
+        self.department_id = department_id
+        self.first_name = first_name
+        self.last_name = last_name
+        self.hire_date = hire_date
+
 
 class WarehouseEquipmentCertification(db.Model):
     __tablename__ = 'warehouse_equipment_certification'

@@ -122,7 +122,10 @@ def warehouseOrders():
 
 @app.route('/warehouseProducts.html')
 def warehouseProducts():
-    return render_template('warehouseProducts.html')
+    if request.method == 'POST':
+        return redirect(url_for('warehouseProductsAdd'))
+    all = model.Product.query.order_by(model.Product.product_name).all()
+    return render_template('warehouseProducts.html', all = all)
 
 @app.route('/warehouseQuarantine.html')
 def warehouseQuarantine():
@@ -130,7 +133,10 @@ def warehouseQuarantine():
 
 @app.route('/warehouseStaff.html')
 def warehouseStaff():
-    return render_template('warehouseStaff.html')
+    if request.method == 'POST':
+        return redirect(url_for('warehouseStaff'))
+    all = model.Stuff.query.all()
+    return render_template('warehouseStaff.html', all=all)
 
 @app.route('/warehouseStock.html')
 def warehouseStock():
