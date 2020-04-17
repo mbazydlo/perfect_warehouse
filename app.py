@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, FieldList, SelectField, DateField
+from wtforms import StringField, SubmitField, FieldList, SelectField
+from wtforms.fields.html5 import DateField
 from wtforms.validators import DataRequired
+from datetime import datetime
+from time import time
 import model
 
 app=Flask(__name__)
@@ -21,9 +24,11 @@ class MainLocationForm(FlaskForm):
 class EquipmentForm(FlaskForm):
     equipment_name = StringField('Nazwa Sprzętu', validators=[DataRequired()])
     main_location_id = SelectField('Lokalizacja Sprzętu', choices=[(1,1),(2,2)])
-    date = DateField('Data')
     submit = SubmitField('Potwierdź')
 
+class EquipmentCertification(FlaskForm):
+    date = DateField('Data')
+    submit = SubmitField('Potwierdź')
 
 @app.route('/')
 def warehouseMain():
@@ -79,10 +84,12 @@ def warehouseEquipmentDelete():
 @app.route('/warehouseEquipmentCertification.html', methods=['GET', 'POST'])
 def warehouseEquipmentCertification():
     equipment_id = request.args.get('equipmentId')
+    form = EquipmentCertification()
     if request.method == 'POST':
         return redirect(url_for('warehouseEquipment'))
-    one = model.WarehouseEquipmentCertification.query.filter_by(id=equipment_id).first()
-    return render_template('warehouseEquipmentCertification.html', one = one)
+    all = db.session.query(model.WarehouseEquipmentCertification).filter_by(id=equipment_id).all()
+    print(all[0].start_date - datetime.date(int(time())))
+    return render_template('warehouseEquipmentCertification.html', all = all, form=form)
 
 
 @app.route('/warehouseMainLocations.html', methods=['GET', 'POST'])

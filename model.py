@@ -12,6 +12,11 @@ class Product(db.Model):
     productOnStock = db.relationship('ProductOnStock', backref='products', lazy = 'dynamic')
     order = db.relationship('Order', backref='product', lazy = 'dynamic')
 
+    def __init__(self, product_name, product_description, product_category_id):
+        self.product_name = product_name
+        self.product_description = product_description
+        self.product_category_id = product_category_id
+
 
 class ProductOnStock(db.Model):
     __tablename__ = 'product_on_stock'
@@ -22,6 +27,7 @@ class ProductOnStock(db.Model):
     stock_location_id = db.Column(db.Integer, db.ForeignKey('warehouse_stock_location.id'))
     quarantine_id = db.Column(db.Integer, db.ForeignKey('warehouse_quarantine.id'))
 
+    
 
 class ProductCategory(db.Model):
     __tablename__ = 'product_category'
@@ -29,6 +35,11 @@ class ProductCategory(db.Model):
     product_category_name = db.Column(db.String)
     product_category_description = db.Column(db.String, nullable=True)
 
+    product = db.relationship('Product', backref='product_category', lazy = 'dynamic')
+
+    def __init__(self, pcn, pcd):
+        self.product_category_name = pcn
+        self.product_category_description = pcd
 
 
 
@@ -78,7 +89,7 @@ class WarehouseEquipment(db.Model):
     equipment_name = db.Column(db.String)
     main_location_id = db.Column(db.Integer, db.ForeignKey('warehouse_main_location.id'))
     warehouseEquipmentCertification = db.relationship('WarehouseEquipmentCertification',
-                                                        backref='stuff',
+                                                        backref='warehouse_equipment',
                                                         lazy = 'dynamic')
 
     def __init__(self, equipment_name, main_location_id):
