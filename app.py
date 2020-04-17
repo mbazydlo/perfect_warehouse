@@ -1,10 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, FieldList, SelectField
-from wtforms.fields.html5 import DateField
-from wtforms.validators import DataRequired
-from datetime import datetime
+from forms import MainLocationForm, EquipmentForm, EquipmentCertification
 from time import time
 import model
 
@@ -15,20 +11,6 @@ app.config['SQLALCHEMY_TRACKMODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'taki sobie sekret'
 
 db = SQLAlchemy(app)
-
-class MainLocationForm(FlaskForm):
-    main_location_name = StringField('Nazwa Magazynu', validators=[DataRequired()])
-    main_location_address = StringField('Adres Magazynu')
-    submit = SubmitField('Potwierdź')
-
-class EquipmentForm(FlaskForm):
-    equipment_name = StringField('Nazwa Sprzętu', validators=[DataRequired()])
-    main_location_id = SelectField('Lokalizacja Sprzętu', choices=[(1,1),(2,2)])
-    submit = SubmitField('Potwierdź')
-
-class EquipmentCertification(FlaskForm):
-    date = DateField('Data')
-    submit = SubmitField('Potwierdź')
 
 @app.route('/')
 def warehouseMain():
@@ -88,7 +70,6 @@ def warehouseEquipmentCertification():
     if request.method == 'POST':
         return redirect(url_for('warehouseEquipment'))
     all = db.session.query(model.WarehouseEquipmentCertification).filter_by(id=equipment_id).all()
-    print(all[0].start_date - datetime.date(int(time())))
     return render_template('warehouseEquipmentCertification.html', all = all, form=form)
 
 
