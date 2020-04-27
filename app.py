@@ -140,6 +140,7 @@ def warehouseStaff():
 
 @app.route('/warehouseStock.html')
 def warehouseStock():
+    player_name =request.args.get('player_name')
     return render_template('warehouseStock.html')
 
 @app.route('/warehouseStockControl.html')
