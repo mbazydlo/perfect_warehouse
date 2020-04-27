@@ -5,10 +5,8 @@ from time import time
 import model
 
 app=Flask(__name__)
+app.config.from_object('settings')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///warehouse.db'
-app.config['SQLALCHEMY_TRACKMODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'taki sobie sekret'
 
 db = SQLAlchemy(app)
 
