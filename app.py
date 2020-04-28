@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, Blueprint
 from flask_sqlalchemy import SQLAlchemy
 from forms import MainLocationForm, EquipmentForm, EquipmentCertification
 from time import time
@@ -9,6 +9,7 @@ app.config.from_object('settings')
 
 
 db = SQLAlchemy(app)
+manager = Blueprint('manager', __name__, template_folder='manager')
 
 @app.route('/')
 def warehouseMain():
@@ -129,12 +130,12 @@ def warehouseProducts():
 def warehouseQuarantine():
     return render_template('warehouseQuarantine.html')
 
-@app.route('/warehouseStaff.html')
+@manager.route('/warehouseStaff.html')
 def warehouseStaff():
     if request.method == 'POST':
         return redirect(url_for('warehouseStaff'))
     all = model.Stuff.query.all()
-    return render_template('warehouseStaff.html', all=all)
+    return render_template('manager/warehouseStaff.html', all=all)
 
 @app.route('/warehouseStock.html')
 def warehouseStock():
@@ -152,4 +153,4 @@ def warehouseStockLocations():
 
 
 if __name__ == '__main__':
-    app.run(port=5001, debug=True)
+    app.run(port=80, debug=True)
