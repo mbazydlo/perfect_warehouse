@@ -1,0 +1,15 @@
+{% extends "warehouseBase.html" %}
+{% block title %} 404 {% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block main %}
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+    <h1>Niestety taka podstona nie istnieje.<h1>
+    <a href="{{ url_for('warehouse_main')}}" class="exercise__submit">Powrót do strony głównej</a>
+{% endblock %}
