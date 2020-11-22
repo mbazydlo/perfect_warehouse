@@ -12,11 +12,11 @@ db = SQLAlchemy(app)
 manager = Blueprint('manager', __name__, template_folder='manager')
 
 @app.route('/')
-def warehouseMain():
+def warehouse_main():
     return render_template('warehouseMain.html')
 
 @app.route('/warehouseEquipment.html', methods=['GET', 'POST'])
-def warehouseEquipment():
+def warehouse_equipment():
     if request.method == 'POST':
         return redirect(url_for('warehouseEquipmentAdd'))
     all = model.WarehouseEquipment.query.order_by(model.WarehouseEquipment.equipment_name).all()
@@ -24,7 +24,7 @@ def warehouseEquipment():
 
 
 @app.route('/warehouseEquipmentAdd.html', methods=['GET', 'POST'])
-def warehouseEquipmentAdd():
+def warehouse_equipmentAdd():
     form = EquipmentForm()
     main_locations = [(wml.id, wml.main_location_name) for wml in model.WarehouseMainLocation.query.all()]
     form.main_location_id.choices = main_locations
@@ -39,7 +39,7 @@ def warehouseEquipmentAdd():
 
 
 @app.route('/warehouseEquipmentEdit.html', methods=['GET', 'POST'])
-def warehouseEquipmentEdit():
+def warehouse_equipmentEdit():
     form = EquipmentForm()
     equipment_id = request.args.get('equipmentId')
     data = db.session.query(model.WarehouseEquipment).filter_by(id=equipment_id)
@@ -53,7 +53,7 @@ def warehouseEquipmentEdit():
     return render_template('warehouseEquipmentEdit.html', to_edit=data.first(), form=form)
 
 @app.route('/warehouseEquipmentDelete.html', methods=['GET', 'POST'])
-def warehouseEquipmentDelete():
+def warehouse_equipment_delete():
     equipment_id = request.args.get('equipmentId')
     to_delete = db.session.query(model.WarehouseEquipment).filter_by(id=equipment_id)
     if request.method == 'POST':
@@ -63,7 +63,7 @@ def warehouseEquipmentDelete():
     return render_template('warehouseEquipmentDelete.html', to_delete=to_delete.first())
 
 @app.route('/warehouseEquipmentCertification.html', methods=['GET', 'POST'])
-def warehouseEquipmentCertification():
+def warehouse_equipment_certification():
     equipment_id = request.args.get('equipmentId')
     form = EquipmentCertification()
     if request.method == 'POST':
@@ -73,14 +73,14 @@ def warehouseEquipmentCertification():
 
 
 @app.route('/warehouseMainLocations.html', methods=['GET', 'POST'])
-def warehouseMainLocations():
+def warehouse_equipment_locations():
     if request.method == 'POST':
         return redirect(url_for('warehouseMainLocationsAdd'))
     all = model.WarehouseMainLocation.query.order_by(model.WarehouseMainLocation.main_location_name).all()
     return render_template('warehouseMainLocations.html', all = all)
 
 @app.route('/warehouseMainLocationsAdd.html', methods=['GET', 'POST'])
-def warehouseMainLocationsAdd():
+def warehouse_equipment_locationsAdd():
     form = MainLocationForm()
     if request.method == 'POST':
         new_main_location = model.WarehouseMainLocation(form.main_location_name.data,
@@ -92,7 +92,7 @@ def warehouseMainLocationsAdd():
     return render_template('warehouseMainLocationsAdd.html', form=form)
 
 @app.route('/warehouseMainLocationsEdit.html', methods=['GET', 'POST'])
-def warehouseMainLocationsEdit():
+def warehouse_equipment_locations_edit():
 
     form = MainLocationForm()
     main_location_id = request.args.get('mainLocationId')
@@ -106,7 +106,7 @@ def warehouseMainLocationsEdit():
 
 
 @app.route('/warehouseMainLocationsDelete.html', methods=['GET', 'POST'])
-def warehouseMainLocationsDelete():
+def warehouse_equipment_locations_delete():
     main_location_id = request.args.get('mainLocationId')
     to_delete = db.session.query(model.WarehouseMainLocation).filter_by(id=main_location_id)
     if request.method == 'POST':
@@ -116,38 +116,38 @@ def warehouseMainLocationsDelete():
     return render_template('warehouseMainLocationsDelete.html', to_delete=to_delete.first())
 
 @app.route('/warehouseOrders.html')
-def warehouseOrders():
+def warehouse_orders():
     return render_template('warehouseOrders.html')
 
 @app.route('/warehouseProducts.html')
-def warehouseProducts():
+def warehouse_products():
     if request.method == 'POST':
         return redirect(url_for('warehouseProductsAdd'))
     all = model.Product.query.order_by(model.Product.product_name).all()
     return render_template('warehouseProducts.html', all = all)
 
 @app.route('/warehouseQuarantine.html')
-def warehouseQuarantine():
+def warehouse_quarantine():
     return render_template('warehouseQuarantine.html')
 
 @manager.route('/warehouseStaff.html')
-def warehouseStaff():
+def warehouse_staff():
     if request.method == 'POST':
         return redirect(url_for('warehouseStaff'))
     all = model.Stuff.query.all()
     return render_template('manager/warehouseStaff.html', all=all)
 
 @app.route('/warehouseStock.html')
-def warehouseStock():
+def warehouse_stock():
     player_name =request.args.get('player_name')
     return render_template('warehouseStock.html')
 
 @app.route('/warehouseStockControl.html')
-def warehouseStockControl():
+def warehouse_stock_control():
     return render_template('warehouseStockControl.html')
 
 @app.route('/warehouseStockLocations.html')
-def warehouseStockLocations():
+def warehouse_stock_locations():
     return render_template('warehouseStockLocations.html')
 
 
