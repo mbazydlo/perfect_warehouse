@@ -5,11 +5,11 @@
     {{ super() }}
 {% endblock %}
 
-{% block main %}
+{% block body %}
     {{ super() }}
 {% endblock %}
 
-{% block body %}
+{% block main %}
     <h1>Coś poszło nie tak, podstaramy się to sprawdzić.<h1>
     <a href="{{ url_for('warehouse_main')}}" class="exercise__submit">Powrót do strony głównej</a>
 {% endblock %}

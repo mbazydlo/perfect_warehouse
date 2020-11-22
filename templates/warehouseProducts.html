@@ -5,11 +5,11 @@
     {{ super() }}
 {% endblock %}
 
-{% block main %}
+{% block body %}
     {{ super() }}
 {% endblock %}
 
-{% block body %}
+{% block main %}
     {{ super() }}
     <a href="{{ url_for('warehouse_equipment_add')}}" class="exercise__submit">Dodaj produkt</a>
     <table class="table">

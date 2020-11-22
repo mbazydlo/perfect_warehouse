@@ -5,11 +5,11 @@
     {{ super() }}
 {% endblock %}
 
-{% block main %}
+{% block body %}
     {{ super() }}
 {% endblock %}
 
-{% block body %}
+{% block main %}
     {{ super() }}
     <p>Czy jesteś pewien, że chcesz usunąć z bazy Sprzęt: {{ to_delete.equipment_name }}</p>
     <form method="POST">
