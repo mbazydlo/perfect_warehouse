@@ -1,5 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-from app import db
+from . import db
 
 
 class Product(db.Model):
