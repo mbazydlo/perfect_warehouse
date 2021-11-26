@@ -54,6 +54,7 @@ pip install -r requirements.txt
 ### Runnning App
 
 # Run app (inside virtual enviroment)
+set enviroment variable FLASK_CONFIG to 'dev', 'prod' or 'test' (the last one for unit testing)
 ```
-python app.py
+flask run
 ```
